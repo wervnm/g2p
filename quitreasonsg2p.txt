@@ -1,0 +1,15 @@
+ Various causes that are defined in code: 
+0 = the local user has asked to quit
+1 = the remote user has asked to quit
+2 = a local communication error has occurred
+3 = a remote communication error has occurred
+4 = a fatal error has occurred locally
+5 = a fatal error has occurred remotely
+6 = quit silently (but properly)
+7 = quit as fast as possible (multiple fatal errors)
+8 = another agent is already connected on the local side
+9 = quit order came from the Generic Session Terminator (GST)
+10 = another user has connected while in session
+11 = quit order is related to authentication, dialog being shown
+12 = quit order is related to application upgrade
+13 = quit order is related to inactivity
