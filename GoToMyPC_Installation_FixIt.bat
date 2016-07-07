@@ -17,7 +17,7 @@ pause > nul & exit
 @echo ****************************************
 @echo *   GoToMyPC Installation Fix It Tool   *
 @echo *                                       *
-@echo * Supports  v9.0 b1826 or lower         *
+@echo * Supports  v9.1 b1875 or lower         *
 @echo ****************************************
 @echo ****************************************
 @echo This tool deletes GoToMyPC program files
@@ -44,7 +44,7 @@ if "%C%"=="1" (
     if %PROCESSOR_ARCHITECTURE% == x86 (
         echo Running Fix It Tool for x86...
 
-xcopy "%systemroot%\Temp\G2_1826\GoToMyPC_Installation.log" "%userprofile%\Desktop\" /y >nul 2>nul
+xcopy "%systemroot%\Temp\G2_1875\GoToMyPC_Installation.log" "%userprofile%\Desktop\" /y >nul 2>nul
 net stop GoToMyPC >nul 2>nul
 net stop monblanking >nul 2>nul
 taskkill /f /t /IM g2svc.exe >nul 2>nul
@@ -87,6 +87,14 @@ del "%programfiles%\Citrix\GoToMyPC\G2WinLogon.dll" /f /q >nul 2>nul
 del "%programfiles%\Citrix\GoToMyPC\x86\" /f /q >nul 2>nul
 del "%programfiles%\Citrix\GoToMyPC\" /f /q >nul 2>nul
 
+rem keys for build 1875
+
+reg delete "HKEY_CLASSES_ROOT\Installer\Features\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
+reg delete "HKEY_CLASSES_ROOT\Installer\Products\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Features\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{12F7BD0E-3C9D-486A-B0E8-1F09318EAAD1}" /f >nul 2>nul
 
 rem keys for build 1826
 
@@ -411,7 +419,7 @@ echo.
  ) else (
         echo Running Fix It Tool for x64...
 
-xcopy "%systemroot%\Temp\G2_1826\GoToMyPC_Installation.log" "%userprofile%\Desktop\" /y >nul 2>nul
+xcopy "%systemroot%\Temp\G2_1875\GoToMyPC_Installation.log" "%userprofile%\Desktop\" /y >nul 2>nul
 echo.
 echo.
 echo Cleaning up installation information from older versions of GoToMyPC . . .
@@ -458,6 +466,13 @@ del "%programfiles(x86)%\Citrix\GoToMyPC\G2WinLogon_x64.dll" /f /q >nul 2>nul
 del "%programfiles(x86)%\Citrix\GoToMyPC\x64\" /f /q >nul 2>nul
 del "%programfiles(x86)%\Citrix\GoToMyPC\" /f /q >nul 2>nul
 
+rem keys for b1875
+reg delete "HKEY_CLASSES_ROOT\Installer\Features\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
+reg delete "HKEY_CLASSES_ROOT\Installer\Features\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Features\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{73125252-5733-403D-92B1-20BB091E2F8E}" /f >nul 2>nul
 
 rem keys for b1826
 reg delete "HKEY_CLASSES_ROOT\Installer\Products\E471BB54B49857041BD2CDE8D59D8906" /f >nul 2>nul
