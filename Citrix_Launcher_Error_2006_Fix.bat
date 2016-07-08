@@ -14,6 +14,7 @@ mkdir %temp%\G2_1752
 mkdir %temp%\G2_1775
 mkdir %temp%\G2_1824
 mkdir %temp%\G2_1826
+mkdir %temp%\G2_1875
 mkdir %temp%\Citrix
 mkdir %temp%\CitrixLogs
 mkdir %temp%\GoToAssist
@@ -42,6 +43,7 @@ takeown /f %temp%\G2_1752
 takeown /f %temp%\G2_1775
 takeown /f %temp%\G2_1824
 takeown /f %temp%\G2_1826
+takeown /f %temp%\G2_1875
 takeown /f %temp%\Citrix
 takeown /f %temp%\CitrixLogs
 takeown /f %temp%\GoToAssist
@@ -70,6 +72,7 @@ cacls %temp%\G2_1752 /t /e /g Everyone:f
 cacls %temp%\G2_1775 /t /e /g Everyone:f
 cacls %temp%\G2_1825 /t /e /g Everyone:f
 cacls %temp%\G2_1826 /t /e /g Everyone:f
+cacls %temp%\G2_1875 /t /e /g Everyone:f
 cacls %temp%\Citrix /t /e /g Everyone:f
 cacls %temp%\CitrixLogs /t /e /g Everyone:f
 cacls %temp%\GoToAssist /t /e /g Everyone:f
@@ -98,6 +101,8 @@ net share %temp%\G2_1752 /delete >nul 2>nul
 net share %temp%\G2_1775 /delete >nul 2>nul
 net share %temp%\G2_1824 /delete >nul 2>nul
 net share %temp%\G2_1826 /delete >nul 2>nul
+net share %temp%\G2_1875 /delete >nul 2>nul
+
 net share %temp%\Citrix  /delete >nul 2>nul
 net share %temp%\CitrixLogs /delete >nul 2>nul
 net share %userprofile%\AppData\Local\Citrix /delete >nul 2>nul
