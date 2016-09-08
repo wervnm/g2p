@@ -108,7 +108,7 @@ if "%C%"=="1" (
 	:remainder 
     if %PROCESSOR_ARCHITECTURE% == x86 (
         echo Removing program files for GoToMyPC x86...
-
+net stop spooler
 net stop GoToMyPC >nul 2>nul
 net stop monblanking >nul 2>nul
 taskkill /f /t /IM g2svc.exe >nul 2>nul
@@ -151,6 +151,40 @@ del "%programfiles%\Citrix\GoToMyPC\G2WinLogon.dll" /f /q >nul 2>nul
 del "%programfiles%\Citrix\GoToMyPC\x86\" /f /q >nul 2>nul
 del "%programfiles%\Citrix\GoToMyPC\" /f /q >nul 2>nul
 
+rem monblanking files
+del "%systemroot%\System32\drivers\monblanking.sys" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\Services\monblanking" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.sys" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.sys" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.sys" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.sys" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFxApp\Components\{D2C1C66F-9EB2-460D-B902-B6FB3E3F9F46}" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\831FB1509292986F102B3AB7C8451FA1EA13B0F7" /f >nul 2>nul
+
+
+rem remote printing 
+del "%systemroot%\system32\gotomon.dll" /f /q >nul 2>nul
+del "%systemroot%\system32\spool\drivers\w32x86\3\G2PrintUPDDriver.dll" /f /q >nul 2>nul
+del "%systemroot%\system32\spool\drivers\w32x86\3\G2PrintUPDUI.dll" /f /q >nul 2>nul
+del "%systemroot%\system32\spool\drivers\w32x86\3\G2PrintUPD.txt" /f /q >nul 2>nul
+del "%systemroot%\system32\spool\prtprocs\w32x86\GoToPrintProcessor.dll" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Monitors\GoToMyPC Port" /f  >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Environments\Windows NT x86\Drivers\Version-3\GoToMyPC UPD Driver"  /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Environments\Windows NT x86\Print Processors\GoToMyPC Print Processor" /f >nul 2>nul
+
+
 echo Removing registry keys for GoToMyPC x86...
 
 rem keys that are common to many builds, so are being included just once. (x86)
@@ -158,13 +192,7 @@ rem keys that are common to many builds, so are being included just once. (x86)
 reg delete "HKEY_CLASSES_ROOT\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\Services\monblanking" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFxApp\Components\{D2C1C66F-9EB2-460D-B902-B6FB3E3F9F46}" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\831FB1509292986F102B3AB7C8451FA1EA13B0F7" /f >nul 2>nul
+
 
 rem keys for build 1875
 reg delete "HKEY_CLASSES_ROOT\Installer\Features\E0DB7F21D9C3A6840B8EF19013E8AA1D" /f >nul 2>nul
@@ -381,6 +409,7 @@ echo.
 del %systemroot%\Temp\G2_*.exe >nul 2>nul
 del %systemroot%\Temp\G2_*.tmp >nul 2>nul
 echo.
+net start spooler
 		ping 1.1.1.1 >nul 2>nul
 echo GoToMyPC program files, registry keys and installer files have been successfully removed. 
 echo If you are troubleshooting with tech support, please give your rep the 'GoToMyPC_Installer_Log' file from your desktop.
@@ -396,6 +425,7 @@ echo.
 echo.
 echo Cleaning up program files for GoToMyPC x64 . . .
 @echo off
+net stop spooler
 net stop GoToMyPC >nul 2>nul
 net stop monblanking >nul 2>nul
 taskkill /f /t /IM g2svc.exe >nul 2>nul
@@ -438,22 +468,48 @@ del "%programfiles(x86)%\Citrix\GoToMyPC\G2WinLogon_x64.dll" /f /q >nul 2>nul
 del "%programfiles(x86)%\Citrix\GoToMyPC\x64\" /f /q >nul 2>nul
 del "%programfiles(x86)%\Citrix\GoToMyPC\" /f /q >nul 2>nul
 
-echo Cleaning up registry keys for GoToMyPC x64 . . .
-
-rem the following  lines are common to multiple builds, so are included just once, for efficiency (x64)
-
-reg delete "HKEY_CLASSES_ROOT\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
-reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
+ rem monblanking files
+del "%systemroot%\System32\drivers\monblanking.sys" /f /q >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\Services\monblanking" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.sys" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71\monblanking.inf" /f /q >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_24DF15B418F8C3AC00711F5F9C8508E9A2722F71" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_08936B884C1597DB0C203D5078AF62A9120400EF\monblanking.sys" /f /q >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_43F3B225C7BFA923CBBCF35F53F3776208A7DF33" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_6E3A3170AAC437510498DE375A122F88C27DEA7C\monblanking.sys" /f /q >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_B7ADDEFD6D09122B2EF5469798E8BF2CF428E2FD" /f >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.cat" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.inf" /f /q >nul 2>nul
+del "%systemroot%\System32\DRVSTORE\monblankin_40D8ED7C325E49643F6E501769B801E39B7B017F\monblanking.sys" /f /q >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFx\DriverStore\monblankin_3B30C2FD879DCEE48DE624C3A64DB9657C378C14" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFxApp\Components\{B8931D88-38B5-4921-BDFD-4C81C4CA2768}" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DIFxApp\Components\{00FDD036-F0F8-4999-B7C4-0568A39ED2B6}" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\831FB1509292986F102B3AB7C8451FA1EA13B0F7" /f >nul 2>nul
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\1DDB4A6E49CF5EAED4A0629D104ACFC2CC28EFED" /f >nul 2>nul
+
+rem remote printing components
+del "%systemroot%\system32\gotomon_x64.dll" /f /q >nul 2>nul
+del "%systemroot%\System32\spool\drivers\x64\3\G2PrintUPDDriver_x64.dll" /f /q >nul 2>nul
+del "%systemroot%\System32\spool\drivers\x64\3\G2PrintUPDUI_x64.dll" /f /q >nul 2>nul
+del "%systemroot%\System32\spool\drivers\x64\3\G2PrintUPD.txt" /f /q >nul 2>nul
+del "%systemroot%\System32\spool\prtprocs\x64\GoToPrintProcessor_x64.dll" /f /q >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Monitors\GoToMyPC Port" >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Environments\Windows x64\Drivers\Version-3\GoToMyPC UPD Driver"  >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print\Environments\Windows x64\Print Processors\GoToMyPC Print Processor"  >nul 2>nul
+
+
+echo Cleaning up registry keys for GoToMyPC x64 . . .
+
+rem the following  lines are common to multiple builds, so are included just once, for efficiency (x64)
+reg delete "HKEY_CLASSES_ROOT\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\UpgradeCodes\4D35A00D0B0B10944BA78997B4E04FE5" /f >nul 2>nul
+
 
 rem keys for b1875
 reg delete "HKEY_CLASSES_ROOT\Installer\Features\252521373375D304291B02BB90E1F2E8" /f >nul 2>nul
@@ -656,6 +712,7 @@ echo Deleting GoToMyPC temporary installer files
 echo.
 del %systemroot%\Temp\G2_*.exe >nul 2>nul
 del %systemroot%\Temp\G2_*.tmp >nul 2>nul
+net start spooler
 		ping 1.1.1.1 >nul 2>nul
 echo GoToMyPC program files, registry keys and installer files have been successfully removed. 
 echo If you are troubleshooting with tech support, please give your rep the 'GoToMyPC_Installer_Log' file from your desktop.
