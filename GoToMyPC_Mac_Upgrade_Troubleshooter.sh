@@ -33,4 +33,5 @@ osascript -e 'do shell script "sudo sh $HOME/Desktop/.g2pts/G2P_Daemon.sh >> $HO
 osascript -e 'tell app "System Events" to display dialog "Waiting 60 seconds to allow upgrade"'
 sleep 60
 cp $g2pPlist $tempDir/G2P_After.plist
-tar czf $archiveName -C $tempDir .
+
+tar -cz --exclude="G2P_Daemon.sh" -f $archiveName -C $tempDir .
