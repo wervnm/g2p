@@ -23,6 +23,7 @@ mkdir %temp%\G2_1826
 mkdir %temp%\G2_1875
 mkdir %temp%\G2_1930
 mkdir %temp%\G2_1943
+mkdir %temp%\G2_2010
 mkdir %temp%\G2_2014
 mkdir %temp%\Citrix
 mkdir %temp%\CitrixLogs
@@ -58,6 +59,7 @@ takeown /f %temp%\G2_1826
 takeown /f %temp%\G2_1875
 takeown /f %temp%\G2_1930
 takeown /f %temp%\G2_1943
+takeown /f %temp%\G2_2010
 takeown /f %temp%\G2_2014
 takeown /f %temp%\Citrix
 takeown /f %temp%\CitrixLogs
@@ -93,6 +95,7 @@ cacls %temp%\G2_1826 /t /e /g Everyone:f
 cacls %temp%\G2_1875 /t /e /g Everyone:f
 cacls %temp%\G2_1930 /t /e /g Everyone:f
 cacls %temp%\G2_1943 /t /e /g Everyone:f
+cacls %temp%\G2_2010 /t /e /g Everyone:f
 cacls %temp%\G2_2014 /t /e /g Everyone:f
 cacls %temp%\Citrix /t /e /g Everyone:f
 cacls %temp%\CitrixLogs /t /e /g Everyone:f
@@ -127,6 +130,7 @@ net share %temp%\G2_1826 /delete >nul 2>nul
 net share %temp%\G2_1875 /delete >nul 2>nul
 net share %temp%\G2_1930 /delete >nul 2>nul
 net share %temp%\G2_1943 /delete >nul 2>nul
+net share %temp%\G2_2010 /delete >nul 2>nul
 net share %temp%\G2_2014 /delete >nul 2>nul
 net share %temp%\Citrix  /delete >nul 2>nul
 net share %temp%\CitrixLogs /delete >nul 2>nul
