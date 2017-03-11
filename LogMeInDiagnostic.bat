@@ -1,5 +1,8 @@
 @echo off
 
+REM LogMeIn Diagnostic Collector
+REM Version 1.0.1
+
 TITLE .:. LogMeIn Diagnostic Information .:.
 
 REM Set log file path
